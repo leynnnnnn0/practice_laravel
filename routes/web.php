@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/post/{id}', function ($id) {
-    $users = User::with('posts')->find($id);
+    $users = User::with('posts', 'comments')->find($id);
     return view('post', ["heading" => "Create a post", 'user' => $users]);
 });
 

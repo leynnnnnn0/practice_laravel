@@ -9,6 +9,16 @@
                 <section class="hover:bg-white border border-gray-300 rounded-lg p-5 h-auto drop-shadow-lg">
                     <h1 class="font-bold text-gray-900 text-xs">{{ $post->title }}</h1>
                     <p class="text-black text-md">{{ $post->body }}</p>
+                    <div class="border-b border-gray-300 w-full my-5"></div>
+                    <section class="block space-y-2">
+                        <h1 class="font-bold text-gray-900 text-lg">Comments</h1>
+                        @foreach($post->comments as $comment)
+                            <section class="flex flex-col border-b border-gray-300 p-5">
+                                <a href="/post/{{ $comment->user->id }}" class="underline font-bold text-blue-900 text-xs">{{ $comment->user->username }}</a>
+                                <p class="text-black text-md">{{ $comment['body'] }}</p>
+                            </section>
+                        @endforeach
+                    </section>
                 </section>
             @endforeach
         </div>
